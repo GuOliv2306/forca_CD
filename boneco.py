@@ -70,4 +70,4 @@ stages = [
 def enforcado(tries):
     print(stages[tries])
 
-print(enforcado(2))
+print(enforcado(6))
