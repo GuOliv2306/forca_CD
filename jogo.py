@@ -1,5 +1,6 @@
 """modulo com funcionamento do jogo"""
 
+from boneco import enforcado
 
 def table(tamanho_palavra_escolhida, acertos):
     print("========================================")
@@ -40,7 +41,8 @@ def jogo(palavra_escolhida):
     acertos = [0] * 9
     tentativas = 6
     letras_escolhidas = set()
-    while tentativas >= 1:  # Função Boneco
+    while tentativas >= 1:
+        enforcado(tentativas)
         tamanho_palavra_escolhida = len(palavra_escolhida)
         table(tamanho_palavra_escolhida, acertos)
 
@@ -50,7 +52,6 @@ def jogo(palavra_escolhida):
 
         if acerto(letra, palavra_escolhida, acertos) == False:
 
-            """Função Boneco com tentativas"""
             print("ERROU!!!")
             if (tentativas == 0):
                 print("VOCÊ PERDEU")
