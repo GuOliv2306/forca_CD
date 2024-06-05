@@ -3,7 +3,7 @@ from openai import OpenAI
 def palavra_gpt(dificuldade, lingua, tamanho, genero):
     client = OpenAI(api_key=("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"))
 
-    prompt = [{"role":"user", "content":f"Me diga uma palavra da língua {lingua} com {tamanho} letras, do gênero {genero} com dificuldade {dificuldade} para um jogo da forca"}]
+    prompt = [{"role":"user", "content":f"Me diga uma palavra da língua {lingua} com {tamanho} letras, do gênero {genero} com dificuldade {dificuldade} para um jogo da forca sem ponto final"}]
 
     response = client.chat.completions.create(
         messages = prompt,
@@ -12,4 +12,4 @@ def palavra_gpt(dificuldade, lingua, tamanho, genero):
         temperature = 1
     )
     return response.choices[0].message.content.lower()
-print(palavra_gpt("medio", "português", 7, "filme"))
+

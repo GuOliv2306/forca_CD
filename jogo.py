@@ -1,6 +1,7 @@
 """modulo com funcionamento do jogo"""
 
 from boneco import enforcado
+import arte_GameOver
 
 def table(tamanho_palavra_escolhida, acertos):
     print("========================================")
@@ -37,8 +38,8 @@ def acerto(letra, palavra_escolhida, acertos):
         return False
 
 
-def jogo(palavra_escolhida):
-    acertos = [0] * 9
+def game(palavra_escolhida):
+    acertos = [0] * len(palavra_escolhida)
     tentativas = 6
     letras_escolhidas = set()
     while tentativas >= 1:
@@ -51,10 +52,12 @@ def jogo(palavra_escolhida):
         print(letras_escolhidas)
 
         if acerto(letra, palavra_escolhida, acertos) == False:
-
+            tentativas-=1
             print("ERROU!!!")
             if (tentativas == 0):
                 print("VOCÊ PERDEU")
+                print(f'a palavra era {palavra_escolhida}')
+                arte_GameOver.gameover()
                 break
             acerto(letra, palavra_escolhida, acertos)
 
@@ -62,5 +65,7 @@ def jogo(palavra_escolhida):
             acerto(letra, palavra_escolhida, acertos)
         elif (tentativas == 0):
             print("VOCÊ PERDEU")
+            print(f'a palavra era {palavra_escolhida}')
+            arte_GameOver.gameover()
         else:
             tentativas = 0
